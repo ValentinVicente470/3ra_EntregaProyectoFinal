@@ -1,0 +1,46 @@
+ <!-- Modal Boton Chat-->
+ <div class="modal fade" id="ChatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+    <div class="modal-dialog">
+        
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="d-flex">
+                    <h2 class="fw-bold text-center"> Chat </h2>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class=" bg-dark gx-0">
+                    <div class="bg-dark" style="height: 70vh!important;">
+        
+                        <div class="container" id="messages"> </div>
+        
+                    </div>
+        
+                </div>
+        
+            </div>
+
+            <div class="modal-footer">
+                
+                <form class="d-flex mb-2 " onsubmit="return addMessage(this);">
+        
+                    <input type="email" id="username" name="username" class="form-control" value="<%= datos.email %>"
+                    style="width: 30%; margin-right: 6px; border-color: #000;" readonly>
+    
+                    <input type="text" id="text" name="text" class="form-control" 
+                    style="width: 60%; border-color: #000;" placeholder="Escriba su Mensaje">
+    
+                    <input type="submit" class="btn btn-dark material-symbols-outlined"
+                    style="margin-left: 10px; width: 10%; color: rgb(255, 255, 255);" value="send">
+    
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

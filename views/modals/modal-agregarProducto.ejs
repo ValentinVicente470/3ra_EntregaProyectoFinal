@@ -1,0 +1,55 @@
+<!-- Modal boton agregar producto-->
+<div class="modal fade" id="AgregarProductoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="d-flex">
+                    <h2 class="fw-bold text-center">Agregar producto</h2>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div>
+                    <form onsubmit="return addProduct(this)">
+
+                        <div class="form-group mb-3">
+                            <label for="name" class="fw-bold">Nombre del producto</label>
+                            <input type="text" class="form-control" id="name" placeholder="Nombre del producto">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="price" class="fw-bold">Precio del producto</label>
+                            <input type="number" step="0.001" class="form-control" id="price" placeholder="Precio del producto">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="description" class="fw-bold">Descripción</label>
+                            <input type="text" class="form-control" id="description" placeholder="Descripción">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="stock" class="fw-bold">Stock</label>
+                            <input type="number" class="form-control" id="stock" placeholder="Stock">
+                        </div>
+
+                        <div class="form-group mb-5">
+                            <label for="thumbnail" class="fw-bold">Foto</label>
+                            <input type="text" class="form-control" id="thumbnail" placeholder="Foto">
+                        </div>
+
+                        <div class="d-grid mb-5">
+                            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title> Carrito </title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        .padd {
+            padding-top: 20px;
+        }
+
+        .fondo {
+            background: rgba(192, 11, 11, 0.559);
+        }
+    </style>
+
+</head>
+
+<body class="bg-dark">
+
+    <nav class="navbar fixed-top navbar-dark bg-dark" style=" border-bottom: 1px solid rgba(140, 12, 244, 0.545);">
+        <div class="container-fluid">
+            <a class="navbar-brand">Carrito de Compras de  <span class="fw-bold"> <%= datos.user%>! </span> </a>
+            <div class="d-flex">
+                <!-- Boton home -->
+                <a 
+                type="button" 
+                class="btn btn-dark material-symbols-outlined" 
+                href="/datos"
+                > home
+                </a>
+                <!-- Boton logout -->
+                <a 
+                    class="btn btn-dark material-symbols-outlined"
+                     data-bs-toggle="modal"
+                    data-bs-target="#LogoutModal"
+                    > logout
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    
+    <!-- tabla prods -->
+    <% if(objetos.length > 0){ %>
+        <div class="row padd bg-dark" style="margin: 8vh 10% 5vh 10%; height: 90vh">
+            <div style="background-color: rgba(216, 9, 9, 0)">
+                <div class="col gx-0" style="background-color: rgba(185, 117, 241, 0.5);">
+                    <table class="table table-hover">
+                        <thead class="table-dark" style="color:rgb(167, 100, 211)">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Descripción</th>
+                                <th>Stock</th>
+                                <th>Foto</th>
+                                <th>ID</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <% for (const objeto of objetos){ %>
+                            <tr>
+                                <td> <%= objeto%> </td>
+                                <td> <%= objeto.productos.price%> </td>
+                                <td> <%= objeto.productos.description%> </td>
+                                <td> <%= objeto.productos.stock%> </td>
+                                <td> <img src="<%=objeto.productos.thumbnail%>" width="80" height="80"> </img> </td>
+                                <td> <%= objeto.productos.id%> </td>
+                                <td> <a href="/carrito/<%objeto.id%>/productos/<%objeto.productos.id%>"></a> </td>
+                            </tr>
+                        <% }; %>    
+                    </table>
+                </div>
+            </div>
+        </div>
+    <% } else{ %>
+        <h3 class="alert alert-danger"> No se encontraron productos en su Carrito de Compras</h3> 
+    <% } %>
+      
+
+    <!-- Boton Chat -->
+    <div class="position-absolute bottom-0 container-fluid ">
+        <button 
+            data-bs-toggle="modal" 
+            data-bs-target="#ChatModal"
+            type="button" 
+            class="bg-dark position-absolute bottom-0 end-0 mb-2 me-2 material-symbols-outlined text-light text-center text-decoration-none"
+            style="padding: 13px 15px; border-radius: 50%;"> chat 
+        </button>
+    </div>
+   
+
+    <%- include('./modals/modal-botonChat.ejs')-%>
+    <%- include('./modals/modal-botonLogout.ejs')-%> 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous">
+    </script>
+
+    <script src="main.js"></script>
+    
+</body>
+
+</html>
